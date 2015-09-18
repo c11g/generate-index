@@ -4,25 +4,35 @@ var fs = require('fs'),
 	path = require('path'),
 	cheerio = require('cheerio');
 
-module.exports = function() {
-	// 변수 정의
-	var dirPath = 'dist/', // 해당 폴더 경로
+var gulpIndxing = function() {
 
-		// html 과 page title 리스트
-		htmlList = [],
-		titleList = [],
+	// 사용자 정보
+		// 프로젝트 명
+	var projectName = '프로젝트명을 입력하세요',
 
-		// 사용자 정보
-		projectName = '미디어젠',
-		author = '조영광, 권태완';
+		// 작업자
+		author = '작업자를 입력하세요.',
+
+		// 리스트업할 페이지가 있는 폴더
+		srcDir = 'dist/',
+
+		// 마크업 리스트 파일 저장할 폴더
+		outDir = '',
+
+		// 마크업 리스트 파일 이름
+		outFileName = '@index.html';
+
+	// html 과 page title 리스트
+	var htmlList = [],
+		titleList = [];
 	
-	getHtmlList(dirPath);
-	getTitleList(htmlList, dirPath);
-	createIndex('src/@index.html');
+	getHtmlList(srcDir);
+	getTitleList(htmlList, srcDir);
+	createIndex(outDir + outFileName);
 
 	// html 리스트 추출
-	function getHtmlList(path){
-		var _allFiles = fs.readdirSync(path);
+	function getHtmlList(srcDir){
+		var _allFiles = fs.readdirSync(srcDir);
 
 		for(var index in _allFiles){
 			var _list = _allFiles[index];
@@ -37,9 +47,9 @@ module.exports = function() {
 	}
 
 	// page title 추출
-	function getTitleList(arr, path){
-		for ( var i=0 ; i < arr.length ; i++ ) {
-			var _data = fs.readFileSync(path + arr[i], 'utf-8');
+	function getTitleList(htmlList, srcDir){
+		for ( var i=0 ; i < htmlList.length ; i++ ) {
+			var _data = fs.readFileSync(srcDir + htmlList[i], 'utf-8');
 
 			// <title> 추출 후 titleList에 추가
 			var pattern = /<title>([\s\S]*)<\/title>/i,
@@ -51,7 +61,6 @@ module.exports = function() {
 
 	// @index.html
 	function createIndex(file){
-
 		// htmlTemplate 파일 참조
 		var templatePath = path.join(__dirname, 'template/@temp.html'),
 			htmlTemplate = fs.readFileSync(templatePath, 'utf-8');
@@ -76,19 +85,19 @@ module.exports = function() {
 					_t.getMonth() + 1 + '.' + 
 					_t.getDate() + '. ' +
 					_t.getHours() + ':' +
-					_t.getMinutes();
+					( _t.getMinutes() < 10 ? '0' : '' ) + _t.getMinutes();
 
 		// 마지막 수정
 		$('#date').text('마지막 수정 : ' + time)
 		
 		// 인덱스 리스트
 		for (var i = 0; i < htmlList.length; i++ ) {
-			$('#list').append('<li><a href='+ '../dist/' + path.normalize(htmlList[i]) +'>' + titleList[i] + '<span>/ ' + path.normalize(htmlList[i]) + '</span>' + '</a></li>');
+			$('#list').append('<li><a href='+ srcDir + htmlList[i] +'>' + titleList[i] + '<span>/ ' + htmlList[i] + '</span>' + '</a></li>');
 		}
 
 		// 변경 내용 쓰기
 		fs.writeFileSync(file, $.html(), 'utf-8')
-
 	}
-
 }
+
+module.exports = gulpIndxing;
