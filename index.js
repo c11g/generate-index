@@ -4,23 +4,25 @@ var fs = require('fs'),
 	path = require('path'),
 	cheerio = require('cheerio');
 
-var gulpIndxing = function() {
+// 사용자 옵션
+var setting = {};
 
-	// 사용자 정보
-		// 프로젝트 명
-	var projectName = '프로젝트명을 입력하세요',
+var gulpIndxing = function(setting) {
 
-		// 작업자
-		author = '작업자를 입력하세요.',
+	// 사용자 옵션 정의 || 기본값
+	var option = {
+		'projectName': setting.projectName || '프로젝트명을 입력하세요',
+		'author': setting.author || '작업자를 입력하세요.',
+		'srcDir': setting.srcDir || 'demo/',
+		'outDir': setting.outDir || '',
+		'outFileName': setting.outFileName || '@index.html'
+	}
 
-		// 리스트업할 페이지가 있는 폴더
-		srcDir = 'dist/',
-
-		// 마크업 리스트 파일 저장할 폴더
-		outDir = '',
-
-		// 마크업 리스트 파일 이름
-		outFileName = '@index.html';
+	var projectName = option.projectName,
+		author = option.author,
+		srcDir = option.srcDir,
+		outDir = option.outDir,
+		outFileName = option.outFileName;
 
 	// html 과 page title 리스트
 	var htmlList = [],
@@ -81,14 +83,14 @@ var gulpIndxing = function() {
 
 		// 현재 시간
 		var _t = new Date(),
-			time = _t.getFullYear() + '.' +
-					_t.getMonth() + 1 + '.' + 
-					_t.getDate() + '. ' +
-					_t.getHours() + ':' +
-					( _t.getMinutes() < 10 ? '0' : '' ) + _t.getMinutes();
+			time = _t.getFullYear() + '년 ' +
+					(_t.getMonth() + 1) + '월 ' + 
+					_t.getDate() + '일 ' +
+					_t.getHours() + '시 ' +
+					( _t.getMinutes() < 10 ? '0' : '' ) + _t.getMinutes() + '분 수정됨';
 
 		// 마지막 수정
-		$('#date').text('마지막 수정 : ' + time)
+		$('#date').text(time)
 		
 		// 인덱스 리스트
 		for (var i = 0; i < htmlList.length; i++ ) {
