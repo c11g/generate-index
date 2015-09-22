@@ -2,6 +2,11 @@
 gulp html 마크업 리스트 출력
 
 --
+## v2.2
+ - @index.html 템플릿 모바일 뷰포트 추가
+ - @index.html 템플릿 <li> 개행
+
+--
 ## v2.0
  - 마지막 수정 시간 분이 한자리일 경우 두자리 형식으로 수정
 
@@ -21,8 +26,7 @@ setting = {
 gulpIndxing({
 	'projectName': '미디어젠',
 	...
-}});
-
+});
 ```
 
 --

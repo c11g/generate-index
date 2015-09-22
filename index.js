@@ -94,7 +94,7 @@ var gulpIndxing = function(setting) {
 		
 		// 인덱스 리스트
 		for (var i = 0; i < htmlList.length; i++ ) {
-			$('#list').append('<li><a href='+ srcDir + htmlList[i] +'>' + titleList[i] + '<span>/ ' + htmlList[i] + '</span>' + '</a></li>');
+			$('#list').append('<li><a href='+ srcDir + htmlList[i] +'>' + titleList[i] + '<span>/ ' + htmlList[i] + '</span>' + '</a></li>\n');
 		}
 
 		// 변경 내용 쓰기
@@ -103,3 +103,8 @@ var gulpIndxing = function(setting) {
 }
 
 module.exports = gulpIndxing;
+
+// gulpIndxing({
+//     'projectName': '네이버',
+//     'author': '메시'
+// });
