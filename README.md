@@ -1,16 +1,16 @@
 # gulp-indexing
 gulp html 마크업 리스트 출력
 
---
+***
 ## v2.2
  - @index.html 템플릿 모바일 뷰포트 추가
- - @index.html 템플릿 <li> 개행
+ - @index.html 템플릿 li 개행
 
---
+***
 ## v2.0
  - 마지막 수정 시간 분이 한자리일 경우 두자리 형식으로 수정
 
---
+***
 ## 사용
 ```javascript
 // 옵션설명(기본값)
@@ -29,7 +29,7 @@ gulpIndxing({
 });
 ```
 
---
+***
 ### todo
 - 안정화 및 코드 리팩토링
 	- 리스트의 path 부분 확인
