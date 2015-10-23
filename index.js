@@ -123,10 +123,14 @@ var gulpIndxing = function(setting) {
 		// 마지막 수정시간 출력
 		$('#date').text(time);
 		
+
 		// 리스트 작성
 		for(var key in pageList){
+			var _name;
+			key === 'base' ? _name = '' : _name = key+'/';
+			$('.content').append('<h2>' + _name + '</h2>').append('<ul class="list ' + key + '"></ul>');
 			for (var i = 0; i < pageList[key].length; i++){
-				$('#list').append('<li><a href='+ srcDir + pageList[key][i] +'>' + titleList[key][i] + '<span>/ ' + pageList[key][i] + '</span>' + '</a></li>\n');
+				$('.'+ key).append('<li><a href='+ srcDir + _name +  pageList[key][i] +'>' + titleList[key][i] + '<span>: ' + srcDir + _name +  pageList[key][i] + '</span>' + '</a></li>\n');
 			}
 		}
 
