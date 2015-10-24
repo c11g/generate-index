@@ -7,7 +7,7 @@ var fs = require('fs'),
 // 사용자 옵션
 var setting = {};
 
-var gulpIndxing = function(setting) {
+var generateIndxing = function(setting) {
 
 	// 사용자 옵션 정의 || 기본값
 	var option = {
@@ -139,9 +139,9 @@ var gulpIndxing = function(setting) {
 	}
 }
 
-module.exports = gulpIndxing;
+module.exports = generateIndxing;
 
-gulpIndxing({
-    'projectName': '네이버',
-    'author': '메시'
-});
+// generateIndxing({
+//     'projectName': '네이버',
+//     'author': '메시'
+// });
