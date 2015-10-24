@@ -1,6 +1,6 @@
 {
 	"name": "generate-index",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "gulp html 마크업 리스트 출력",
 	"main": "index.js",
 	"scripts": {
