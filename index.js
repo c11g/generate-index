@@ -14,7 +14,6 @@ var generateIndxing = function(setting) {
 		'projectName': setting.projectName || '프로젝트명을 입력하세요',
 		'author': setting.author || '작업자를 입력하세요.',
 		'srcDir': setting.srcDir || 'demo/',
-		'outDir': setting.outDir || '',
 		'extention': setting.extention || '.html',
 		'outFileName': setting.outFileName || '@index.html'
 	}
@@ -22,7 +21,6 @@ var generateIndxing = function(setting) {
 	var projectName = option.projectName,
 		author = option.author,
 		srcDir = option.srcDir,
-		outDir = option.outDir,
 		extention = option.extention,
 		outFileName = option.outFileName;
 
@@ -35,7 +33,7 @@ var generateIndxing = function(setting) {
 		};
 
 	getList(srcDir);
-	createIndex(outDir + outFileName);
+	createIndex(srcDir + outFileName);
 
 	// 페이지, 타이틀 리스트 추출
 	function getList(srcDir){
@@ -130,7 +128,7 @@ var generateIndxing = function(setting) {
 			key === 'base' ? _name = '' : _name = key+'/';
 			$('.content').append('<h2>' + _name + '</h2>').append('<ul class="list ' + key + '"></ul>');
 			for (var i = 0; i < pageList[key].length; i++){
-				$('.'+ key).append('<li><a href='+ srcDir + _name +  pageList[key][i] +'>' + titleList[key][i] + '<span>: ' + srcDir + _name +  pageList[key][i] + '</span>' + '</a></li>\n');
+				$('.'+ key).append('<li><a href='+ _name +  pageList[key][i] +'>' + titleList[key][i] + '<span>: ' + _name +  pageList[key][i] + '</span>' + '</a></li>\n');
 			}
 		}
 
@@ -141,7 +139,7 @@ var generateIndxing = function(setting) {
 
 module.exports = generateIndxing;
 
-// generateIndxing({
-//     'projectName': '네이버',
-//     'author': '메시'
-// });
+generateIndxing({
+    'projectName': '네이버',
+    'author': '메시'
+});

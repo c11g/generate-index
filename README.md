@@ -3,8 +3,8 @@
 
 ***
 
-## v2.0
-
+## v2.1
+outDir 삭제
 
 ***
 ## 사용
@@ -14,7 +14,6 @@ setting = {
 	'projectName': // 프로젝트 명 ('프로젝트명을 입력하세요')
 	'author': // 작업자 ('작업자를 입력하세요.')
 	'srcDir': // 리스트업할 페이지가 있는 폴더 ('demo/'')
-	'outDir': // 마크업 리스트 파일 저장할 폴더 ('')
 	'extention': // 확장자 지정 ('.html')
 	'outFileName': // 생성할 마크업 리스트 파일 이름 (@index.html)
 }
