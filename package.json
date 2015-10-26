@@ -1,22 +1,28 @@
 {
-	"name": "generate-index",
-	"version": "1.0.0",
-	"description": "Create a page index",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/commool/generate-index.git"
-	},
-	"author": "ChoYoungKwang",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/commool/generate-index/issues"
-	},
-	"homepage": "https://github.com/commool/generate-index#readme",
-	"devDependencies": {
-		"cheerio": "^0.19.0"
-	}
+  "name": "generate-index",
+  "version": "3.0.0",
+  "description": "Create a page index",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commool/generate-index.git"
+  },
+  "author": "ChoYoungKwang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/commool/generate-index/issues"
+  },
+  "homepage": "https://github.com/commool/generate-index#readme",
+  "devDependencies": {
+    "cheerio": "^0.19.0"
+  },
+  "dependencies": {
+    "cheerio": "^0.19.0"
+  },
+  "keywords": [
+    "index"
+  ]
 }
