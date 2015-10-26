@@ -126,7 +126,7 @@ var generateIndxing = function(setting) {
 		for(var key in pageList){
 			var _name;
 			key === 'base' ? _name = '' : _name = key+'/';
-			$('.content').append('<h2>' + _name + '</h2>').append('<ul class="list ' + key + '"></ul>');
+			if(pageList[key] != '') $('.content').append('<h2>' + _name + '</h2>').append('<ul class="list ' + key + '"></ul>'); 
 			for (var i = 0; i < pageList[key].length; i++){
 				$('.'+ key).append('<li><a href='+ _name +  pageList[key][i] +'>' + titleList[key][i] + '<span>: ' + _name +  pageList[key][i] + '</span>' + '</a></li>\n');
 			}
@@ -139,7 +139,8 @@ var generateIndxing = function(setting) {
 
 module.exports = generateIndxing;
 
-generateIndxing({
-    'projectName': '네이버',
-    'author': '메시'
-});
+// 테스트용 코드
+// generateIndxing({
+//     'projectName': '네이버',
+//     'author': '메시'
+// });
