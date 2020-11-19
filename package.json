@@ -16,13 +16,10 @@
     "url": "https://github.com/commool/generate-index/issues"
   },
   "homepage": "https://github.com/commool/generate-index#readme",
-  "devDependencies": {
-    "cheerio": "^0.19.0"
-  },
-  "dependencies": {
-    "cheerio": "^0.19.0"
-  },
   "keywords": [
     "index"
-  ]
+  ],
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.3"
+  }
 }
