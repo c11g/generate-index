@@ -7,24 +7,21 @@
 
 ***
 ## 사용
-```javascript
-// 옵션설명(기본값)
-setting = {
-	'projectName': // 프로젝트 명 ('프로젝트명을 입력하세요')
-	'author': // 작업자 ('작업자를 입력하세요.')
-	'srcDir': // 리스트업할 페이지가 있는 폴더 ('demo/'')
-	'extention': // 확장자 지정 ('.html')
-	'outFileName': // 생성할 마크업 리스트 파일 이름 (@index.html)
-}
-
+```js
 // 실행
-generateIndxing({
-	'projectName': '미디어젠',
-	...
+indexList({
+	"projectName": "My Project",
+	"author": "c11g",
+	"srcDir": "demo/"
 });
 ```
+## options
+- `projectName`: *optional*, default: `"Enter a project"`
+- `author`: *optional*, default: `"Enter a author"`
+- `srcDir`: *required*, source directory, ex) `"demo/"`
+- `ext`: *optional*, extention, default: `".html"`
+- `output`: *optional*, output file name, default: `"@index.html"`
 
 ***
 ### todo
-- 안정화 및 코드 리팩토링
-- 다운로드 기능
+- search 기능

@@ -60,10 +60,3 @@ const indexList = ({
 const data = {};
 
 module.exports = indexList;
-
-// 테스트용 코드
-indexList({
-	"projectName": "Enter a project",
-	"author": "Enter a author",
-	"srcDir": "demo/"
-});
