@@ -20,8 +20,9 @@ const render = (projectName, author, srcDir, output) => {
 	const time = `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일 ${date.getHours()<10 ? `0${date.getHours()}` : date.getHours()}:${date.getMinutes()<10 ? `0${date.getMinutes()}` : date.getMinutes()} 수정됨`;
 	$("#date").text(time);
 	
+	$("#count").text(`Total: ${Object.values(data).reduce((acc, item) => acc + item.length, 0)} pages`);
 	for (const folder in data) {
-		$(".content").append(`<h2>${folder}</h2>`);
+		$(".content").append(`<h2>${folder}<em>${data[folder].length} pages</em></h2>`);
 		$(".content").append(`<ul class="list">${
 			data[folder].reduce((acc, menu) => acc + `<li><a href="./${folder.slice(srcDir.length)}${menu[0]}">${menu[1]}<span>:${menu[0]}</span></a></li>`, "")
 		}</ul>`);
