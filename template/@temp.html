@@ -5,12 +5,19 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
 	<title>마크업 리스트</title>
 	<style>
-		h1{font-size:20px;color:#444;}
-		h2{overflow:hidden;margin:15px 0 0;font-size:16px;}
+		body{margin:0;}
+		h1{margin:10px;font-size:20px;color:#444;}
+		h2{overflow:hidden;margin:0;font-size:16px;}
 		h2>em{float:right;font-size:13px;font-style:normal;}
-		#admin, #date{margin:5px 0;font-size:11px;color:#999;}
-		#count{margin: 5px 0;font-size:14px;font-weight:700;color:#555;text-align:right;}
-		.list{margin:5px 0 0;padding:0;}
+		#admin, #date{margin:5px 10px;font-size:11px;color:#999;}
+		.search{overflow:hidden;margin:10px;}
+		#search{float:left;box-sizing:border-box;height:24px;padding:0 5px;border:1px solid #ddd;border-radius:4px;line-height:24px;}
+		#count{font-size:14px;font-weight:700;color:#555;text-align:right;}
+		[data-search]{padding:10px;background:#ffface;}
+		[data-total]{padding:10px;}
+		.list{position:relative;margin:5px 0 0;padding:0;}
+		.list[hidden]{display:none;}
+		.list::after{position:absolute;top:-24px;right:0;display:block;font-size:14px;font-weight:700;line-height:24px;color:#555;content:attr(data-count);}
 		.list li{list-style:none;margin:0;padding:0;border-top:1px solid #eaeaea;}
 		.list li:first-child{border-top:3px solid #444;}
 		.list a{display:block;padding:10px 31px 10px 5px;text-decoration:none;color:#000;font-size:13px;background:url(data:image/gif;base64,R0lGODlhEQAJAIABAJWVlf///yH5BAEAAAEALAAAAAARAAkAAAITBIKpa7efGpxyvmoRztt272RJAQA7) no-repeat 100% 50%;}
@@ -25,10 +32,70 @@
 <p id="admin"></p>
 
 <p id="date"></p>
-
-<div class="content">
+<div class="search">
+	<input type="text" placeholder="searching" id="search">
 	<div id="count"></div>
 </div>
-
+<div data-search hidden>
+	<h2>SEARCH</h2>
+	<ul class="list" data-search-list></ul>
+</div>
+<div class="content" data-total></div>
+<script>
+	const total = Array.prototype.slice.call(document.querySelectorAll("[data-total] li"));
+	const searchArea = document.querySelector("[data-search]");
+	const searchList = document.querySelector("[data-search-list]");
+	let result = [];
+	let timer;
+	
+	document.querySelector("#search").addEventListener("input", function(e) {
+		if(timer) {
+			clearTimeout(timer);
+		}
+		timer = setTimeout(function(){
+			inputHandler(e);
+		}, 400);
+	});
+	renderCount();
+	
+	function inputHandler(e){
+		const keyword = e.target.value;
+		if(!keyword.trim()) {
+			searchArea.setAttribute("hidden", "");
+			return;
+		}
+		result = [];
+		searchArea.removeAttribute("hidden");
+		searching(keyword);
+		if (result.length < 1) {
+			result.push("검색 결과가 없습니다.")
+		};
+		render();
+		renderCount();
+	}
+	
+	function searching(value){
+		total.forEach(function(li){
+			if (li.innerText.includes(value)) {
+				result.push(li.outerHTML);
+			}
+		});
+	}
+	
+	function render(){
+		searchList.innerHTML = "";
+		const html = result.reduce(function(acc, li){
+			return acc + li;
+		});
+		searchList.innerHTML = html;
+	}
+	
+	function renderCount(){
+		const ul = document.querySelectorAll("ul");
+		ul.forEach(ul => {
+			ul.dataset.count = `${ul.childElementCount} pages`;
+		})
+	}
+</script>
 </body>
 </html>
