@@ -22,6 +22,7 @@ const render = (projectName, author, srcDir, output) => {
 	
 	$("#count").text(`Total: ${Object.values(data).reduce((acc, item) => acc + item.length, 0)} pages`);
 	for (const folder in data) {
+		if (data[folder].length < 1) continue;
 		$(".content").append(`<h2>${folder}<em>${data[folder].length} pages</em></h2>`);
 		$(".content").append(`<ul class="list">${
 			data[folder].reduce((acc, menu) => acc + `<li><a href="./${folder.slice(srcDir.length)}${menu[0]}">${menu[1]}<span>:${menu[0]}</span></a></li>`, "")
