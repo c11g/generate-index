@@ -1,6 +1,6 @@
 # generate-index
 
-### v4.0.1
+### v4.1.0
 ```sh
 npm i -D generate-index
 ```
@@ -19,6 +19,3 @@ indexList({
 - `author`: *optional*, default: `"Enter a author"`
 - `ext`: *optional*, extention, default: `".html"`
 - `output`: *optional*, output file name, default: `"@index.html"`
-
-### todo
-- search 기능
