@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
+<!DOCTYPE html><html lang="ko"><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
 	<title>마크업 리스트</title>
@@ -27,20 +25,20 @@
 </head>
 <body>
 
-<h1 id="title"></h1>
+<h1 id="title">My Project</h1>
 
-<p id="admin"></p>
+<p id="admin">작업자 : c11g</p>
 
-<p id="date"></p>
+<p id="date">2020년 11월 22일 19:27 수정됨</p>
 <div class="search">
 	<input type="text" placeholder="searching" id="search">
-	<div id="count"></div>
+	<div id="count">Total: 15 pages</div>
 </div>
 <div data-search hidden>
 	<h2>SEARCH</h2>
 	<ul class="list" data-search-list></ul>
 </div>
-<div class="content" data-total></div>
+<div class="content" data-total><h2>demo/</h2><ul class="list"><li><a href="./page1.html">page1<span>:page1.html</span></a></li><li><a href="./page2.html">page2<span>:page2.html</span></a></li><li><a href="./page3.html">page3<span>:page3.html</span></a></li><li><a href="./page4.html">page4<span>:page4.html</span></a></li><li><a href="./page5.html">page5<span>:page5.html</span></a></li></ul><h2>demo/etc/</h2><ul class="list"><li><a href="./etc/etc-page1.html">ETC1<span>:etc-page1.html</span></a></li><li><a href="./etc/etc-page2.html">ETC2<span>:etc-page2.html</span></a></li><li><a href="./etc/etc-page3.html">ETC3<span>:etc-page3.html</span></a></li></ul><h2>demo/home/</h2><ul class="list"><li><a href="./home/home-page1.html">Home1<span>:home-page1.html</span></a></li><li><a href="./home/home-page2.html">Home2<span>:home-page2.html</span></a></li><li><a href="./home/home-page3.html">Home3<span>:home-page3.html</span></a></li></ul><h2>demo/home/common/</h2><ul class="list"><li><a href="./home/common/home-common-page1.html">Common1<span>:home-common-page1.html</span></a></li></ul><h2>demo/sub/</h2><ul class="list"><li><a href="./sub/sub-page1.html">Sub1<span>:sub-page1.html</span></a></li><li><a href="./sub/sub-page2.html">Sub2<span>:sub-page2.html</span></a></li><li><a href="./sub/sub-page3.html">Sub3<span>:sub-page3.html</span></a></li></ul></div>
 <script>
 	const total = Array.prototype.slice.call(document.querySelectorAll("[data-total] li"));
 	const searchArea = document.querySelector("[data-search]");
@@ -97,5 +95,5 @@
 		})
 	}
 </script>
-</body>
-</html>
+
+</body></html>
